@@ -1,27 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>気付きメモ</title>
-        <link rel="stylesheet" href="<c:url value='/css/reset.css' />">
-        <link rel="stylesheet" href="<c:url value='/css/style.css' />">
-    </head>
-    <body>
-        <div id="wrapper">
-            <div id="header">
-                <h1>気付きメモ 〜Kidzuki〜</h1>
-            </div>
+<head>
+<meta charset="UTF-8">
 
-            <div id="content">
-                ${param.content}
-            </div>
+<title>気付きメモ</title>
+<link rel="stylesheet" href="<c:url value='/css/ureset.css' />">
+<link rel="stylesheet" href="<c:url value='/css/ustyle.css' />">
+</head>
 
-            <div id="footer">
-                ©︎2020.IKKI.K
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="header_menu">
+                <h1><a href="<c:url value='/' />">気付きメモ 〜Kidzuki〜</a></h1>&nbsp;&nbsp;&nbsp;
+                <c:if test="${sessionScope.login_user != null}">
+                    <c:if test="${sessionScope.login_user.admin_flag == 1}">
+                        <a href="<c:url value='/users/index' />">ユーザー管理</a>&nbsp;
+                    </c:if>
+                    <a href="<c:url value='/realizations/index' />">気付き管理</a>&nbsp;
+                </c:if>
             </div>
-
+            <c:if test="${sessionScope.login_user != null}">
+                <div id="user_name">
+                    <c:out value="${sessionScope.login_user.name}" />
+                    &nbsp;さん&nbsp;&nbsp;&nbsp;
+                     <a href="<c:url value='/logout' />">ログアウト</a>
+                </div>
+            </c:if>
         </div>
-    </body>
+        <div id="content">${param.content}
+        </div>
+
+        <div id="footer">©︎2020.IKKI.K
+        </div>
+    </div>
+</body>
 </html>

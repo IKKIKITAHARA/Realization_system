@@ -1,4 +1,4 @@
-package controllers.toppage;
+package controllers.realization;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,20 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Realization;
-import models.User;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class TopPageIndexServlet
+ * Servlet implementation class RealizationIndexServlet
  */
-@WebServlet("/index.html")
-public class TopPageIndexServlet extends HttpServlet {
+@WebServlet("/realizations/index")
+public class RealizationsIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TopPageIndexServlet() {
+    public RealizationsIndexServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,12 +32,8 @@ public class TopPageIndexServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
-
-        User login_user = (User)request.getSession().getAttribute("login_user");
 
         int page;
         try{
@@ -46,14 +41,12 @@ public class TopPageIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
-        List<Realization> realizations = em.createNamedQuery("getMyAllRealization", Realization.class)
-                                  .setParameter("user", login_user)
+        List<Realization> realizations = em.createNamedQuery("getAllRealizations", Realization.class)
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
                                   .getResultList();
 
-        long realizations_count = (long)em.createNamedQuery("getMyRealizationsCount", Long.class)
-                                     .setParameter("user", login_user)
+        long realizations_count = (long)em.createNamedQuery("getRealizationsCount", Long.class)
                                      .getSingleResult();
 
         em.close();
@@ -61,13 +54,12 @@ public class TopPageIndexServlet extends HttpServlet {
         request.setAttribute("realizations", realizations);
         request.setAttribute("realizations_count", realizations_count);
         request.setAttribute("page", page);
-
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/topPage/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/realizations/index.jsp");
         rd.forward(request, response);
     }
 
