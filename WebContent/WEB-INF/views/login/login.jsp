@@ -7,9 +7,9 @@
                 ユーザーIDかパスワードが間違っています。
             </div>
         </c:if>
-        <c:if test="${flush != null}">
-            <div id="flush_success">
-                <c:out value="${flush}"></c:out>
+        <c:if test="${general_flush != null}">
+            <div id="general_flush_success">
+                <c:out value="${general_flush}"></c:out>
             </div>
         </c:if>
         <h2>ログイン</h2>
@@ -26,6 +26,6 @@
             <button type="submit">ログイン</button>
         </form>
 
-     <p><a href = "<c:url value = '/generalUsers/new' />">ユーザー新規登録はこちらから</a></p>
+     <p><a href = "<c:url value = "/users/new?general_user=${general_user}" />">ユーザー新規登録はこちらから</a></p>
     </c:param>
 </c:import>

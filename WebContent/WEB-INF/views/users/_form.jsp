@@ -9,6 +9,7 @@
 
     </div>
 </c:if>
+
 <label for="code">ユーザーID</label><br />
 <input type="text" name="code" value="${user.code}" />
 <br /><br />
@@ -21,12 +22,16 @@
 <input type="password" name="password" />
 <br /><br />
 
+<c:if test = "${general_user == null && sessionScope.login_user != null}">
 <label for="admin_flag">権限</label><br />
 <select name="admin_flag">
     <option value="0"<c:if test="${user.admin_flag == 0}"> selected</c:if>>一般</option>
     <option value="1"<c:if test="${user.admin_flag == 1}"> selected</c:if>>管理者</option>
 </select>
 <br /><br />
+</c:if>
+
 
 <input type="hidden" name="_token" value="${_token}" />
-<button type="submit">Sign up！</button>
+<input type ="hidden" name = "general_user"  value = "${general_user}" />
+<button type="submit">登録！</button>

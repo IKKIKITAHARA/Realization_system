@@ -37,6 +37,7 @@ public class UsersCreateServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             String _token = (String)request.getParameter("_token");
+            String general_user = (String)request.getParameter("general_user");
             if(_token != null && _token.equals(request.getSession().getId())) {
                 EntityManager em = DBUtil.createEntityManager();
 
@@ -50,7 +51,11 @@ public class UsersCreateServlet extends HttpServlet {
                                 (String)this.getServletContext().getAttribute("pepper")
                                 )
                         );
+                if(general_user == null){
                 u.setAdmin_flag(Integer.parseInt(request.getParameter("admin_flag")));
+                }else{
+                    u.setAdmin_flag(0);
+                }
 
                 Timestamp currentTime = new Timestamp(System.currentTimeMillis());
                 u.setCreated_at(currentTime);
@@ -73,6 +78,7 @@ public class UsersCreateServlet extends HttpServlet {
                     em.getTransaction().commit();
                     em.close();
                     request.getSession().setAttribute("flush", "登録が完了しました！");
+                    request.getSession().setAttribute("general_flush", "登録が完了しました！早速ログインしましょう。");
 
                     response.sendRedirect(request.getContextPath() + "/users/index");
                 }

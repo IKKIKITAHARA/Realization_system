@@ -1,4 +1,4 @@
-package controllers.realization;
+package controllers.like;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,21 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Like;
-import models.Realization;
 import models.User;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class RealizationShowServlet
+ * Servlet implementation class LikeIndexServlet
  */
-@WebServlet("/realizations/show")
-public class RealizationsShowServlet extends HttpServlet {
+@WebServlet("/likes/index")
+public class LikeIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RealizationsShowServlet() {
+    public LikeIndexServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,25 +36,17 @@ public class RealizationsShowServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        Realization r = em.find(Realization.class, Integer.parseInt(request.getParameter("id")));
-
-        request.setAttribute("realization", r);
-        request.setAttribute("_token", request.getSession().getId());
-
         User login_user = (User) request.getSession().getAttribute("login_user");
 
-        List<Like> myLike = em.createNamedQuery("getLikeDatas", Like.class)
-                            .setParameter("likedUser", login_user)
-                            .setParameter("likedRealization", r)
-                            .getResultList();
+        List<Like> myLikes = em.createNamedQuery("getMyAllLikes", Like.class)
+                               .setParameter("likedUser", login_user)
+                               .getResultList();
 
         em.close();
 
-        request.setAttribute("myLike", myLike);
+        request.setAttribute("myLikes", myLikes);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/realizations/show.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/likes/index.jsp");
         rd.forward(request, response);
-
     }
-
 }

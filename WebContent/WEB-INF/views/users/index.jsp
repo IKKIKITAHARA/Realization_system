@@ -27,7 +27,7 @@
           (ユーザー削除済み)
           </c:when>
                                 <c:otherwise>
-                                    <a href="<c:url value='/users/show?id=${user.code}' />">ユーザー情報を表示</a>
+                                    <a href="<c:url value='/users/show?id=${user.id}' />">ユーザー情報を表示</a>
                                 </c:otherwise>
                             </c:choose>
                     </tr>

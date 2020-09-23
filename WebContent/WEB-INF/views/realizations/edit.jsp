@@ -15,7 +15,7 @@
         </c:choose>
 
         <p><a href="<c:url value='/realizations/index' />">一覧に戻る</a></p>
-        <p><a href="#" onclick="confirmDestroy();">このメッセージを削除する</a></p>
+        <p><a href="#" onclick="confirmDestroy();">この気付きを削除する</a></p>
         <form method="POST" action="<c:url value='/realizations/destroy' />">
             <input type="hidden" name="_token" value="${_token}" />
         </form>

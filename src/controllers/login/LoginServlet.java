@@ -41,6 +41,10 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
+        if(request.getSession().getAttribute("general_flush") != null){
+            request.setAttribute("general_flush", request.getSession().getAttribute("general_flush"));
+            request.getSession().removeAttribute("general_flush");
+        }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
         rd.forward(request, response);
@@ -92,7 +96,7 @@ public class LoginServlet extends HttpServlet {
             rd.forward(request, response);
         } else {
 
-            request.getSession().setAttribute("login_user", u);//ログイン情報をセッションスコープに保存
+            request.getSession().setAttribute("login_user", u);
 
             request.getSession().setAttribute("flush", "ログインしました。");
             response.sendRedirect(request.getContextPath() + "/");
