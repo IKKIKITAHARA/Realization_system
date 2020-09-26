@@ -36,15 +36,29 @@ public class LikeIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
+        int page;
+        try{
+           page = Integer.parseInt(request.getParameter("page"));
+        } catch(Exception e){
+            page = 1;
+        }
         User login_user = (User) request.getSession().getAttribute("login_user");
 
         List<Like> myLikes = em.createNamedQuery("getMyAllLikes", Like.class)
-                               .setParameter("likedUser", login_user)
-                               .getResultList();
+                            .setFirstResult(15 * (page - 1))
+                            .setMaxResults(15)
+                            .setParameter("likedUser", login_user)
+                            .getResultList();
+
+        long likes_count = (long)em.createNamedQuery("getMyLikesCount", Long.class)
+                            .setParameter("likedUser", login_user)
+                            .getSingleResult();
 
         em.close();
 
         request.setAttribute("myLikes", myLikes);
+        request.setAttribute("likes_count", likes_count);
+       request.setAttribute("page", page);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/likes/index.jsp");
         rd.forward(request, response);

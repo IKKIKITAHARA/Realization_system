@@ -5,6 +5,7 @@
         <class>models.User</class>
         <class>models.Realization</class>
         <class>models.Like</class>
+        <class>models.Profile</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/realization_system?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>

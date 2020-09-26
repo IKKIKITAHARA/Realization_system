@@ -9,7 +9,7 @@
             </div>
         </c:if>
         <h2>気付きリスト</h2>
-        <table id="realization_list">
+        <table id="realizations_list">
             <tbody>
                 <tr>
                     <th class="realization_name">ユーザー名</th>

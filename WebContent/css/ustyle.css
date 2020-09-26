@@ -101,11 +101,14 @@ button {
 }
 
 table#user_list th {
+    text-align: center;
+    font-weight: bold;
     width: 30%;
     padding: 10px 2%;
 }
 
 table#user_list td {
+    text-align: center;
     width: 29%;
     padding: 10px 2%;
 }
@@ -145,34 +148,80 @@ h1 a {
 }
 
 table#realizations_list th {
+    text-align: center;
     font-weight: bold;
     padding: 10px 2%;
 }
 
-table#realization_list .realization_name{
+table#realizations_list td {
+    text-align: center;
+    width: 29%;
+    padding: 10px 2%;
+}
+
+
+table#realizations_list .realization_name{
     width: 20%;
     padding: 10px 2%;
 }
 
-table#realization_list .realization_date {
+table#realizations_list .realization_date {
     width: 15%;
 }
 
-table#realization_list .realization_title {
+table#realizations_list .realization_title {
     width: 45%;
 }
 
-table#realization_list .realization_evalution {
+table#realizations_list .realization_evalution {
     width: 10%;
 }
 
-table#realization_list .realization_fixation {
+table#realizations_list .realization_fixation {
     width: 10%;
 }
 
-table#realization_list .realization_action {
+table#realizations_list .realization_action {
     width: 15%;
 }
+
+table#likes_list th {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#likes_list td {
+    text-align: center;
+    width: 29%;
+    padding: 10px 2%;
+}
+
+table#likes_list .realization_name{
+    width: 20%;
+    padding: 10px 2%;
+}
+
+table#likes_list .realization_date {
+    width: 15%;
+}
+
+table#likes_list .realization_title {
+    width: 45%;
+}
+
+table#likes_list .realization_evalution {
+    width: 10%;
+}
+
+table#likes_list .realization_fixation {
+    width: 10%;
+}
+
+table#likes_list .realization_action {
+    width: 15%;
+}
+
 
 pre {font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
 }
