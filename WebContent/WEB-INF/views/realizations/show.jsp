@@ -61,7 +61,7 @@
                     </tbody>
                 </table>
 
-                <c:if test="${sessionScope.login_user.id == myLikes.user.id}">
+                <c:if test="${sessionScope.login_user.id == realization.user.id}">
                     <p>
                         <a
                             href="<c:url value="/realizations/edit?id=${realization.id}" />">この気付きを編集する</a>
