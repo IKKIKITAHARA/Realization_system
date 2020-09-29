@@ -12,7 +12,7 @@
         <table id="realizations_list">
             <tbody>
                 <tr>
-                    <th class="realization_name">ユーザー名</th>
+                    <th class="realization_name">投稿者名</th>
                     <th class="realization_date">日付</th>
                     <th class="realization_title">タイトル</th>
                     <th class="realization_evalution">有益度</th>
@@ -21,10 +21,10 @@
                 </tr>
                 <c:forEach var="realization" items="${realizations}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td class="realization_name"><c:out value="${realization.user.name}" /></td>
+                        <td class ="realization_name"><a href = "<c:url value = '/profiles/show?id=${realization.user.id}' />">${realization.user.name}</a></td>
                         <td class="realization_date"><fmt:formatDate value='${realization.realization_date}' pattern='yyyy-MM-dd' /></td>
-                        <td class="realization_evalution">${realization.title}</td>
-                        <td class="realization_fixation">
+                        <td class="realization_title">${realization.title}</td>
+                        <td class="realization_evalution">
                         <c:choose>
                            <c:when test="${realization.evalution==0}">☆
                            </c:when>
@@ -33,7 +33,7 @@
                            <c:otherwise>☆☆☆</c:otherwise>
                            </c:choose>
                            </td>
-                        <td class="realization_title">
+                        <td class="realization_fixation">
                         <c:choose>
                            <c:when test="${realization.fixation==0}">★
                            </c:when>

@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                             <th>内容</th>
-                            <td><pre><c:out value="${realization.content}" /></pre></td>
+                            <td><c:out value="${realization.content}" /></td>
                         </tr>
 
                         <tr>
@@ -88,7 +88,7 @@
                 </c:otherwise>
             </c:choose>
         </p>
-        <p><a href="<c:url value="/realizations/index" />">一覧に戻る</a>
+        <p><a href="<c:url value="/realizations/index" />">気付きリストに戻る</a>
         </p>
     </c:param>
 </c:import>

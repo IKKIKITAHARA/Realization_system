@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Realization;
-import models.User;
 import utils.DBUtil;
 
 /**
@@ -36,8 +35,6 @@ public class RealizationsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        User login_user = (User)request.getSession().getAttribute("login_user");
-
 
         int page;
         try{
@@ -50,14 +47,12 @@ public class RealizationsIndexServlet extends HttpServlet {
                                   .setMaxResults(15)
                                   .getResultList();
 
-        long realizations_count = (long)em.createNamedQuery("getMyRealizationsCount", Long.class)
-                                  .setParameter("user", login_user)
+        long realizations_count = (long)em.createNamedQuery("getRealizationsCount", Long.class)
                                   .getSingleResult();
 
         em.close();
 
         request.setAttribute("realizations", realizations);
-        request.setAttribute("realizations_count", realizations_count);
         request.setAttribute("page", page);
         request.setAttribute("realizations_count", realizations_count);
         if(request.getSession().getAttribute("flush") != null) {

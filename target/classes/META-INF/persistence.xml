@@ -7,13 +7,13 @@
         <class>models.Like</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="javax.persistence.schema-generation.database.action" value="none"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="javax.persistence.jdbc.url" value="dbc:mysql://localhost/realization_system?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
-            <property name="javax.persistence.jdbc.user" value="reauser"/>
-            <property name="javax.persistence.jdbc.password" value="reapass"/>
+            <property name="javax.persistence.jdbc.user" value="b52ffadf48e7fe"/>
+            <property name="javax.persistence.jdbc.password" value="004a5cd5"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://us-cdbr-east-02.cleardb.com/heroku_d26a10065076423?reconnect=true?reconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8"/>
         </properties>
     </persistence-unit>
 </persistence>

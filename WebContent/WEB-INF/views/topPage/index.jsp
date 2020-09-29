@@ -10,7 +10,7 @@
         </c:if>
         <h2>気付きメモへようこそ</h2>
         <h3>【自分の気付き一覧】</h3>
-        <table id="realization_list">
+        <table id="realizations_list">
             <tbody>
                 <tr>
                     <th class="realization_name">氏名</th>
@@ -23,7 +23,7 @@
                 </tr>
                 <c:forEach var="realization" items="${realizations}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td class="realization_name"><c:out value="${realization.user.name}" /></td>
+                        <td class="realization_name"><a href = "<c:url value = '/profiles/show?id=${realization.user.id}' />">${realization.user.name}</a></td>
                         <td class="realization_date"><fmt:formatDate value='${realization.realization_date}' pattern='yyyy-MM-dd' /></td>
                         <td class="realization_title">${realization.title}</td>
                        <td class="realization_fixation">

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -53,11 +54,12 @@ public class User {
     @Column(name = "delete_flag", nullable = false)
     private Integer delete_flag;
 
-    @Column(name = "profile")
-    private String profile;
-
     @Column(name = "admin_flag", nullable = false)
     private Integer admin_flag;
+
+    @Lob
+    @Column(name = "profile", nullable = true)
+    private String profile;
 
     public Integer getId() {
         return id;
@@ -115,20 +117,20 @@ public class User {
         this.delete_flag = delete_flag;
     }
 
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
-
     public Integer getAdmin_flag() {
         return admin_flag;
     }
 
     public void setAdmin_flag(Integer admin_flag) {
         this.admin_flag = admin_flag;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
 }
