@@ -49,14 +49,14 @@
         </table>
 
         <div id="pagination">
-            （全 ${realizations_count} 件）<br />
+            (全 ${realizations_count} 件)<br />
             <c:forEach var="i" begin="1" end="${((realizations_count - 1) / 15) + 1}" step="1">
                 <c:choose>
-                    <c:when test="${i == page}">
-                        <c:out value="${i}" />&nbsp;
+                    <c:when test="${r == page}">
+                        <c:out value="${r}" />&nbsp;
                     </c:when>
                     <c:otherwise>
-                        <a href="<c:url value='/realizations/index?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
+                        <a href="<c:url value='/realizations/index?page=${r}' />"><c:out value="${i}" /></a>&nbsp;
                     </c:otherwise>
                 </c:choose>
             </c:forEach>

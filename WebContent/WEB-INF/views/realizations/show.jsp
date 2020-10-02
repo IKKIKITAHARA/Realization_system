@@ -11,7 +11,7 @@
                 <table>
                     <tbody>
                         <tr>
-                            <th>氏名</th>
+                            <th>ユーザー名</th>
                             <td><c:out value="${realization.user.name}" /></td>
                         </tr>
                         <tr>
@@ -25,7 +25,8 @@
                         </tr>
                         <tr>
                             <th>内容</th>
-                            <td><c:out value="${realization.content}" /></td>
+                            <td style="word-wrap:break-word;"><c:out value="${realization.content}" /></td>
+
                         </tr>
 
                         <tr>
@@ -88,6 +89,7 @@
                 </c:otherwise>
             </c:choose>
         </p>
+        <p><a href="<c:url value = "/likes/show?id=${realization.id}" />"> いいね数；${likes_count}</a></p>
         <p><a href="<c:url value="/realizations/index" />">気付きリストに戻る</a>
         </p>
     </c:param>

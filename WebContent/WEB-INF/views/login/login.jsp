@@ -27,5 +27,7 @@
         </form>
 
      <p><a href = "<c:url value = "/users/new?general_user=${general_user}" />">ユーザー新規登録はこちらから</a></p>
+     <p>↑↑ご自由にユーザー登録・投稿してください↑↑</p>
+
     </c:param>
 </c:import>

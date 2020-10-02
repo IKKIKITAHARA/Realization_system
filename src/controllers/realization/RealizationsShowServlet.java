@@ -49,9 +49,15 @@ public class RealizationsShowServlet extends HttpServlet {
                             .setParameter("likedRealization", r)
                             .getResultList();
 
+        long likes_count = (long)em.createNamedQuery("getLikesCount", Long.class)
+                           .setParameter("likedRealization",r)
+                           .getSingleResult();
+
+
         em.close();
 
         request.setAttribute("myLike", myLike);
+        request.setAttribute("likes_count", likes_count);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/realizations/show.jsp");
         rd.forward(request, response);

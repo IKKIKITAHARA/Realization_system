@@ -17,7 +17,7 @@
                 </tr>
                 <c:forEach var = "myLike" items="${myLikes}" varStatus = "status">
                 <tr class ="row${status.count % 2 }">
-                    <td class="realization_name"><c:out value="${myLike.likedRealization.user.name}" /></td>
+                    <td class="realization_name"><a href = "<c:url value = '/profiles/show?id=${myLike.likedRealization.user.id}' />">${myLike.likedRealization.user.name}</a></td>
                     <td class="realization_date"><fmt:formatDate value="${myLike.likedRealization.realization_date}" pattern='yyyy-MM-dd' /></td>
                     <td class="realization_title">${myLike.likedRealization.title}</td>
                     <td class="realization_evalution"><c:choose>
@@ -41,17 +41,17 @@
         </table>
 
         <div id = "pagination">
-        (全 ${likes_count} 件) <br />
-        <c:forEach var = "i" begin = "1" end="${((realizations_count - 1) / 15) + 1}" step = "1">
+        (全 ${myLikes_count} 件) <br />
+        <c:forEach var = "i" begin = "1" end="${((myLikes_count - 1) / 15) + 1}" step = "1">
             <c:choose>
-              <c:when test = "${i == page}">
-                <c:out value = "${i}" />&nbsp;
-             </c:when>
+                <c:when test = "${l == page}">
+                <c:out value = "${l}" />&nbsp;
+                </c:when>
              <c:otherwise>
-             <a href="<c:url value='/likes/index?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
+               <a href="<c:url value='/likes/index?page=${l}' />"><c:out value="${i}" /></a>&nbsp;
              </c:otherwise>
-             </c:choose>
-             </c:forEach>
+           </c:choose>
+         </c:forEach>
         </div>
         <p>
             <a href="<c:url value='/realizations/new' />">新しい気付きの登録</a>

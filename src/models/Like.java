@@ -17,7 +17,9 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "getLikeDatas",query = "SELECT l FROM Like AS l WHERE l.likedUser = :likedUser AND l.likedRealization = :likedRealization ORDER BY l.id DESC"),
     @NamedQuery(name = "getMyAllLikes",query = "SELECT l FROM Like AS l WHERE l.likedUser = :likedUser ORDER BY l.id DESC"),
-    @NamedQuery(name = "getMyLikesCount", query = "SELECT COUNT(l) FROM Like AS l WHERE l.likedUser = :likedUser")
+    @NamedQuery(name = "getMyLikesCount", query = "SELECT COUNT(l) FROM Like AS l WHERE l.likedUser = :likedUser"),
+    @NamedQuery(name = "getLikesCount", query = "SELECT COUNT(l) FROM Like AS l WHERE l.likedRealization = :likedRealization"),
+    @NamedQuery(name = "getLikedUsers", query = "SELECT l from Like AS l WHERE l.likedRealization = :likedRealization ORDER BY l.id DESC")
              })
 
 @Entity

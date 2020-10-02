@@ -50,15 +50,15 @@ public class LikeIndexServlet extends HttpServlet {
                             .setParameter("likedUser", login_user)
                             .getResultList();
 
-        long likes_count = (long)em.createNamedQuery("getMyLikesCount", Long.class)
+        long myLikes_count = (long)em.createNamedQuery("getMyLikesCount", Long.class)
                             .setParameter("likedUser", login_user)
                             .getSingleResult();
 
         em.close();
 
         request.setAttribute("myLikes", myLikes);
-        request.setAttribute("likes_count", likes_count);
-       request.setAttribute("page", page);
+        request.setAttribute("myLikes_count", myLikes_count);
+        request.setAttribute("page", page);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/likes/index.jsp");
         rd.forward(request, response);

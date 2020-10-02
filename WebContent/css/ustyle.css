@@ -49,6 +49,7 @@ table, tr, th, td {
 table {
     width: 100%;
     table-layout: fixed;
+    word-break: normal;
 }
 
 th {
@@ -224,6 +225,7 @@ table#likes_list .realization_action {
 
 
 pre {font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+word-break: break-word;
 }
 
 h3 {

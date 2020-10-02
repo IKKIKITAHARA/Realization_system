@@ -22,7 +22,7 @@
                         </tr>
                         <tr>
                             <th>プロフィール</th>
-                            <td><c:out value="${user.profile}" /></td>
+                            <td><pre><c:out value="${user.profile}" /></pre></td>
                         </tr>
                     </tbody>
                 </table>
