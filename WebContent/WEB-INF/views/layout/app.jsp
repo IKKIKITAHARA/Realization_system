@@ -22,7 +22,6 @@
                     </c:if>
                     <a href="<c:url value='/realizations/index' />">気付き管理</a>&nbsp;
                     <a href="<c:url value='/likes/index' />">いいねした投稿一覧</a> &nbsp;
-                    <a href="<c:url value='/follows/index' />">フォローUの投稿一覧</a> &nbsp;
                 </c:if>
             </div>
             <c:if test="${sessionScope.login_user != null}">
