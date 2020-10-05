@@ -77,8 +77,7 @@
         <p>
             <c:choose>
                 <c:when test="${myLike == null || fn:length ( myLike ) == 0}">
-                    <a
-                        href="<c:url value="/realizations/like?likeaction=${realization.id}" />">いいね！</a>
+                    <a href="<c:url value="/realizations/like?likeaction=${realization.id}" />">いいね！</a>
                 </c:when>
                 <c:otherwise>
                     <p>

@@ -40,6 +40,19 @@
             </c:otherwise>
         </c:choose>
 
+     <p>
+       <c:choose>
+        <c:when test = "${myFollow == null || fn:length ( myFollow ) == 0}" >
+         <a href="<c:url value = "/follows?followed_id=${user.id}" />">フォローする</a>
+       </c:when>
+        <c:otherwise>
+                    <form method="POST" action="<c:url value = '/follows/destroy' />">
+                        <input type="hidden" name="followed_id" value="${user.id}" />
+                        <button type="submit"> フォローを外す</button>
+                    </form>
+        </c:otherwise>
+        </c:choose>
+        </p>
         <p><a href="<c:url value="/realizations/index" />">気付きリストに戻る</a>
         </p>
     </c:param>
